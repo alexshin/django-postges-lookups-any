@@ -64,7 +64,7 @@ DATABASES = {
         'USER': os.getenv('DJANGO_POSTGRES_LOOKUPS_ANY_DB_USER', 'admin'),
         'PASSWORD': os.getenv('DJANGO_POSTGRES_LOOKUPS_ANY_DB_PASSWORD', 'admin'),
         'HOST': os.getenv('DJANGO_POSTGRES_LOOKUPS_ANY_DB_HOST', '127.0.0.1'),
-        'PORT': os.getenv('DJANGO_POSTGRES_LOOKUPS_ANY_DB_HOST', '5432'),
+        'PORT': os.getenv('DJANGO_POSTGRES_LOOKUPS_ANY_DB_PORT', '5432'),
     }
 }
 
