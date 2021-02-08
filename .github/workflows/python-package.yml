@@ -18,7 +18,9 @@ jobs:
         image: postgres
         # Provide the password for postgres
         env:
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: admin
+          POSTGRES_PASSWORD: admin
+          POSTGRES_DB: django_postgres_any_db_name
         # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
