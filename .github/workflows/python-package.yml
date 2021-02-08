@@ -49,9 +49,9 @@ jobs:
       run: python -m pip install -U ${{ matrix.django-version }}
     - name: Test with pytest
       env:
-        DJANGO_POSTGRES_LOOKUPS_ANY_DB_USER: postgres
-        DJANGO_POSTGRES_LOOKUPS_ANY_DB_PASSWORD: postgres
+        DJANGO_POSTGRES_LOOKUPS_ANY_DB_USER: admin
+        DJANGO_POSTGRES_LOOKUPS_ANY_DB_PASSWORD: admin
         DJANGO_POSTGRES_LOOKUPS_ANY_DB_HOST: localhost
-        DJANGO_POSTGRES_LOOKUPS_ANY_DB_NAME: postgres
+        DJANGO_POSTGRES_LOOKUPS_ANY_DB_NAME: django_postgres_any_db_name
       run: |
         pytest
