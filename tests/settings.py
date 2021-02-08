@@ -68,6 +68,10 @@ DATABASES = {
     }
 }
 
+# It is running on CI with no create-db permissions
+if DATABASES['default']['NAME'] == 'postgres':
+    DATABASES['default']['TEST'] = {'NAME': 'postgres'}
+
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
 
