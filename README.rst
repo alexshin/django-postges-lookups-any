@@ -5,12 +5,6 @@ django-postgres-lookups-any
 .. image:: https://badge.fury.io/py/django-postges-lookups-any.svg
     :target: https://badge.fury.io/py/django-postges-lookups-any
 
-.. image:: https://travis-ci.org/alexshin/django-postges-lookups-any.svg?branch=master
-    :target: https://travis-ci.org/alexshin/django-postges-lookups-any
-
-.. image:: https://codecov.io/gh/alexshin/django-postges-lookups-any/branch/master/graph/badge.svg
-    :target: https://codecov.io/gh/alexshin/django-postges-lookups-any
-
 Provides =ANY(ARRAY(xxx)) instead of IN (xxx)
 
 Documentation
