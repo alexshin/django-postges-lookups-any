@@ -49,7 +49,7 @@ jobs:
       env:
         DJANGO_POSTGRES_LOOKUPS_ANY_DB_USER: postgres
         DJANGO_POSTGRES_LOOKUPS_ANY_DB_PASSWORD: postgres
-        DJANGO_POSTGRES_LOOKUPS_ANY_DB_HOST: postgres
+        DJANGO_POSTGRES_LOOKUPS_ANY_DB_HOST: localhost
         DJANGO_POSTGRES_LOOKUPS_ANY_DB_NAME: postgres
       run: |
         pytest
