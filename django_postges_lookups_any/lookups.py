@@ -1,6 +1,7 @@
 from django.db.models import Field
 from django.db.models.lookups import FieldGetDbPrepValueIterableMixin, BuiltinLookup, EmptyResultSet
 from django.utils.datastructures import OrderedSet
+from itertools import chain, repeat
 
 
 @Field.register_lookup
@@ -27,7 +28,11 @@ class AnySubqueryLookup(FieldGetDbPrepValueIterableMixin, BuiltinLookup):
             # rhs should be an iterable; use batch_process_rhs() to
             # prepare/transform those values.
             sqls, sqls_params = self.batch_process_rhs(compiler, connection, rhs)
-            placeholder = '[' + ', '.join(sqls) + ']'
+            sqls = iter(sqls)
+            # placeholder = '[' + ', '.join(sqls) + ']'
+            # lazy (and thus, memory efficient) "[ item, item, item ]" generation, just better version of statement above
+            placeholder = ''.join(chain('[', [next(sqls), ], chain.from_iterable(zip(repeat(', '), sqls)), ']'))
+
             return (placeholder, sqls_params)
         else:
             if not getattr(self.rhs, 'has_select_fields', True):
