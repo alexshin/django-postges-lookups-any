@@ -27,7 +27,11 @@ class AnySubqueryLookup(FieldGetDbPrepValueIterableMixin, BuiltinLookup):
             # rhs should be an iterable; use batch_process_rhs() to
             # prepare/transform those values.
             sqls, sqls_params = self.batch_process_rhs(compiler, connection, rhs)
-            placeholder = '[' + ', '.join(sqls) + ']'
+            sqls = iter(sqls)
+            # placeholder = '[' + ', '.join(sqls) + ']'
+            # lazy (and thus, memory efficient) "[ item, item, item ]" generation, just better version of statement above
+            placeholder = ''.join(IT.chain('[', [next(sqls), ], IT.chain.from_iterable(zip(IT.repeat(', '), sqls)), ']'))
+
             return (placeholder, sqls_params)
         else:
             if not getattr(self.rhs, 'has_select_fields', True):
